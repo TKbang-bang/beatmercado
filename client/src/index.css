@@ -1,0 +1,51 @@
+:root {
+  --bg_black: #222831;
+  --sc_black: #2d4059;
+  --orange: #ff5722;
+  --white: #f2f9f1;
+
+  letter-spacing: 0.3px;
+  font-synthesis: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg_black);
+  color: var(--white);
+
+  font-family: "Inter", sans-serif;
+}
+
+.title {
+  color: var(--orange);
+  font-family: "Bebas Neue", sans-serif;
+  /* font-weight: 400; */
+  font-style: normal;
+}
+
+.logo {
+  font-family: "Bebas Neue", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.container {
+  padding-inline: 10rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    padding-inline: 7rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding-inline: 1rem;
+  }
+}
