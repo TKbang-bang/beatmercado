@@ -53,13 +53,6 @@ function Hero() {
             <p>Buy beats</p>
             <ArrowRightIcon />
           </a>
-
-          {/* <div className="url_container">
-            <a href="" target="_blank" className="b">
-              <BeatstarsIcon />
-            </a>
-            <p>BeatStars</p>
-          </div> */}
         </div>
       </div>
     </section>

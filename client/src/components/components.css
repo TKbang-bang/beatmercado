@@ -276,6 +276,11 @@
   }
 }
 
+.services {
+  background-color: var(--sc_black);
+  padding-block: 8rem;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     height: 4rem;

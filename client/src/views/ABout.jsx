@@ -5,10 +5,6 @@ import lilAdams from "../assets/adams.png";
 function About() {
   return (
     <main className="about">
-      {/* =================================
-          01 — ABOUT ME
-      ================================= */}
-
       <section className="about_section about_intro">
         <div className="container">
           <div className="about_image">
@@ -53,10 +49,6 @@ function About() {
           </div>
         </div>
       </section>
-
-      {/* =================================
-          02 — FROM BEATS TO MUSIC
-      ================================= */}
 
       <section className="about_section about_evolution">
         <div className="container">
@@ -104,10 +96,6 @@ function About() {
           </div>
         </div>
       </section>
-
-      {/* =================================
-          03 — BUILDING WHAT'S NEXT
-      ================================= */}
 
       <section className="about_section about_present">
         <div className="container">
