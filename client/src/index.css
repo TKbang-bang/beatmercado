@@ -4,8 +4,14 @@
   --orange: #ff5722;
   --white: #f2f9f1;
 
+  color-scheme: dark;
   letter-spacing: 0.3px;
   font-synthesis: none;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 * {
@@ -15,10 +21,16 @@
 }
 
 body {
+  min-width: 320px;
   background-color: var(--bg_black);
   color: var(--white);
-
   font-family: "Inter", sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
 }
 
 .title {
@@ -47,5 +59,15 @@ body {
 @media screen and (max-width: 768px) {
   .container {
     padding-inline: 1rem;
+  }
+
+  html {
+    scroll-padding-top: 4.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
 }

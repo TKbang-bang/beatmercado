@@ -1,158 +1,278 @@
-import React from "react";
-import "./about.css";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import lilAdams from "../assets/adams.png";
+import studioPortrait from "../assets/p3.jpg";
+import studioWide from "../assets/p1.jpg";
+import studioMixer from "../assets/p4.jpg";
+import "./about-page.css";
+
+const beatStore =
+  import.meta.env.VITE_AUDIOS_URL || "https://www.beatstars.com/beatmercado";
 
 function About() {
+  useEffect(() => {
+    const elements = document.querySelectorAll(".about-reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.14 },
+    );
+
+    elements.forEach((element) => observer.observe(element));
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <main className="about">
-      <section className="about_section about_intro">
-        <div className="container">
-          <div className="about_image">
-            <div className="image_circle">
-              <img src={lilAdams} alt="Lil Adams" />
+    <main className="about-page">
+      <section className="about-masthead">
+        <div className="about-masthead-inner">
+          <div className="about-masthead-copy">
+            <p className="about-eyebrow about-reveal">
+              <span /> DETRÁS DEL SONIDO
+            </p>
+            <h1 className="about-reveal">
+              Donde todo
+              <br />
+              <span>comenzó.</span>
+            </h1>
+            <p className="about-lead about-reveal">
+              Una computadora, mucha curiosidad y el comienzo de un camino en la
+              producción musical.
+            </p>
+            <a className="about-scroll about-reveal" href="#origin">
+              <span>DESLIZA PARA EXPLORAR</span>
+              <i />
+            </a>
+          </div>
+
+          <div className="about-masthead-art about-reveal">
+            <div className="about-art-frame">
+              <img
+                className="about-art-background"
+                src={studioPortrait}
+                alt="Un productor trabajando en el estudio"
+              />
+              <div className="about-art-shade" />
+              <img
+                className="about-artist-cutout"
+                src={lilAdams}
+                alt="Lil Adams"
+              />
+              <span className="about-art-tag">
+                LIL ADAMS · PRODUCTOR / ARTISTA
+              </span>
+            </div>
+            <div className="about-stamp" aria-hidden="true">
+              <span>BEAT</span>
+              <b>✳</b>
+              <span>MERCADO</span>
+            </div>
+            <span className="about-art-coordinate">01 / EL COMIENZO</span>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-chapter about-origin" id="origin">
+        <div className="about-chapter-inner">
+          <div className="about-chapter-heading about-reveal">
+            <p className="about-eyebrow">
+              <span /> 01 — LA PRIMERA CHISPA
+            </p>
+            <h2>
+              Donde todo
+              <br />
+              <span>comenzó.</span>
+            </h2>
+            <div className="about-chapter-index">01</div>
+          </div>
+
+          <div className="about-prose about-reveal">
+            <p>
+              El camino de Lil Adams en la música comenzó con algo sencillo: una
+              computadora que recibió como regalo. Lo que empezó como una nueva
+              tecnología por explorar se convirtió poco a poco en la herramienta
+              que lo introdujo a un mundo completamente distinto: la producción
+              musical.
+            </p>
+            <p>
+              A medida que descubría cómo se hacía la música, su curiosidad
+              crecía. No solo le interesaba escucharla, sino también entender
+              qué ocurría detrás: cómo se elegían los sonidos, cómo se
+              combinaban melodías y ritmos, y cómo un beat podía darle identidad
+              a una canción.
+            </p>
+            <p>
+              Ese interés lo llevó naturalmente al beatmaking. Empezó a aprender
+              experimentando y practicando, familiarizándose con las
+              herramientas y técnicas necesarias para producir música. Desde el
+              principio no hubo una fórmula perfecta. Aprendió creando,
+              escuchando, equivocándose, intentándolo de nuevo y buscando
+              constantemente cómo mejorar.
+            </p>
+            <p>
+              Lo que comenzó como curiosidad se convirtió poco a poco en una
+              verdadera pasión por la producción musical y en el deseo de
+              desarrollar un sonido propio.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className="about-chapter about-evolution">
+        <div className="about-evolution-inner">
+          <div className="about-evolution-art about-reveal">
+            <img
+              src={studioWide}
+              alt="Equipo de producción musical en el estudio"
+              loading="lazy"
+            />
+            <span className="about-photo-caption">
+              DETRÁS DE CADA SONIDO — UN PROCESO
+            </span>
+            <div className="about-art-counter">
+              02 <span>/ 03</span>
             </div>
           </div>
 
-          <div className="about_text">
-            <span className="about_number">01: ABOUT ME</span>
-
-            <h2>Where It All Started</h2>
-
-            <p>
-              Lil Adams' journey into music began with something simple: a
-              computer he received as a gift. What started as a new piece of
-              technology to explore gradually became the tool that introduced
-              him to an entirely different world — music production.
-            </p>
-
-            <p>
-              As he spent more time discovering how music was made, his
-              curiosity grew. He became interested not only in listening to
-              music, but also in understanding what happened behind it: how
-              sounds were selected, how melodies and rhythms were combined, and
-              how a beat could give a song its identity.
-            </p>
-
-            <p>
-              That interest naturally led him toward beatmaking. He began
-              learning through experimentation and practice, becoming more
-              familiar with the tools and techniques needed to produce music.
-              There was no perfect formula from the beginning. He learned by
-              creating, listening, making mistakes, trying again, and constantly
-              looking for ways to improve.
-            </p>
-
-            <p>
-              What began as curiosity slowly became a genuine passion for music
-              production and the desire to develop a sound of his own.
-            </p>
+          <div className="about-evolution-copy">
+            <div className="about-chapter-heading about-reveal">
+              <p className="about-eyebrow">
+                <span /> 02 — DE LOS BEATS A LA MÚSICA
+              </p>
+              <h2>
+                De aprender
+                <br />
+                <span>a crear.</span>
+              </h2>
+            </div>
+            <div className="about-prose about-reveal">
+              <p>
+                A medida que desarrollaba sus habilidades, hacer beats dejó de
+                ser solo una experiencia personal de aprendizaje y se convirtió
+                en algo que podía compartir con otros artistas. Empezó a crear
+                beats para otras personas, colaborar con distintos artistas y
+                desarrollar música con la intención de darle a cada canción una
+                base sólida.
+              </p>
+              <p>
+                Con el tiempo, algunos de esos beats también estuvieron
+                disponibles para la venta. Esto marcó un paso importante en su
+                camino. La producción musical ya no era solamente algo que
+                disfrutaba hacer en su tiempo libre; empezaba a formar parte de
+                su carrera creativa y era una manera de conectar con artistas
+                que buscaban sonidos para construir su propia música.
+              </p>
+              <p>
+                Al mismo tiempo, Lil Adams siguió explorando la música desde
+                otro lado: como artista. Muchas de las canciones que ha creado
+                incluyen su propia voz, interpretando sobre beats que él mismo
+                produjo. Estar tanto detrás de la producción como frente al
+                micrófono le ha permitido entender el proceso creativo desde
+                ambas perspectivas.
+              </p>
+              <p>
+                Esa combinación ha definido su manera de acercarse a la música.
+                No solo piensa en cómo suena un beat por sí mismo, sino también
+                en cómo puede acompañar una voz, crear una atmósfera y formar
+                parte de una canción completa. Cada producción es una nueva
+                oportunidad para experimentar, mejorar y desarrollar un sonido
+                que se sienta auténtico.
+              </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="about_section about_evolution">
-        <div className="container">
-          <div className="about_heading">
-            <span className="about_number">02: FROM BEATS TO MUSIC</span>
-
-            <h2>From Learning to Creating</h2>
+      <section className="about-chapter about-next">
+        <div className="about-next-inner">
+          <div className="about-chapter-heading about-reveal">
+            <p className="about-eyebrow">
+              <span /> 03 — CONSTRUYENDO LO QUE VIENE
+            </p>
+            <h2>
+              Construyendo
+              <br />
+              <span>lo que viene.</span>
+            </h2>
+            <div className="about-chapter-index">03</div>
           </div>
 
-          <div className="about_text about_text_wide">
-            <p>
-              As his skills developed, making beats stopped being only a
-              personal learning experience and became something he could share
-              with other artists. He began creating beats for other people,
-              collaborating with different artists and developing music with the
-              intention of giving each song a strong foundation.
-            </p>
-
-            <p>
-              Over time, some of those beats also became available for sale.
-              This marked an important step in his journey. Music production was
-              no longer simply something he enjoyed doing in his free time; it
-              was becoming part of his creative career and a way to connect with
-              other artists who were looking for sounds to build their own music
-              around.
-            </p>
-
-            <p>
-              At the same time, Lil Adams continued exploring music from another
-              side — as an artist himself. Many of the songs he has created
-              feature his own voice, with Lil Adams performing over beats that
-              he produced himself. Being both behind the production and in front
-              of the microphone has allowed him to understand the creative
-              process from both perspectives.
-            </p>
-
-            <p>
-              That combination has shaped the way he approaches his music. He is
-              not only thinking about how a beat sounds on its own, but also
-              about how it can support a voice, create an atmosphere, and become
-              part of a complete song. Every production becomes another
-              opportunity to experiment, improve, and develop a sound that feels
-              authentic to him.
-            </p>
+          <div className="about-next-content">
+            <div className="about-prose about-reveal">
+              <p>
+                Hoy, Lil Adams sigue llevando ese camino más lejos. Actualmente
+                está construyendo su propio estudio: un espacio pensado no solo
+                para producir beats, sino también para grabar y desarrollar
+                música desde las primeras ideas hasta convertirlas en canciones
+                terminadas.
+              </p>
+              <p>
+                El estudio representa otro paso importante en su carrera. Contar
+                con un espacio propio le da la oportunidad de trabajar con más
+                constancia, experimentar con nuevas ideas, grabar su propia
+                música y crear un entorno donde la creatividad pueda crecer.
+              </p>
+              <p>
+                Mientras construye ese espacio, sigue produciendo nuevos beats,
+                ampliando su catálogo y compartiendo su trabajo con artistas que
+                buscan sonidos nuevos. También difunde sus producciones en redes
+                sociales para que su música llegue a más oyentes y artistas, más
+                allá de su entorno cercano.
+              </p>
+              <p>
+                El camino todavía se está construyendo. Desde aquella
+                computadora que lo acercó por primera vez a la producción
+                musical, hasta crear beats para otros artistas, vender su
+                trabajo, interpretar sobre sus propias producciones y ahora
+                construir su estudio, cada etapa ha sido un paso más para
+                convertir una pasión en algo más grande.
+              </p>
+              <p>
+                Para Lil Adams, el objetivo no es simplemente hacer más beats.
+                Es seguir creciendo como productor y artista, crear música que
+                conecte con las personas y construir un espacio donde las ideas
+                puedan convertirse en canciones reales.
+              </p>
+            </div>
+            <div className="about-next-image about-reveal">
+              <img
+                src={studioMixer}
+                alt="Consola de mezcla lista para una nueva grabación"
+                loading="lazy"
+              />
+              <span>EL PRÓXIMO CAPÍTULO ESTÁ EN MARCHA.</span>
+            </div>
           </div>
+          <a
+            href={beatStore}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="about-beatstars-link about-reveal"
+          >
+            Explora mis beats <span>↗</span>
+          </a>
         </div>
       </section>
 
-      <section className="about_section about_present">
-        <div className="container">
-          <div className="about_heading">
-            <span className="about_number">03: BUILDING WHAT'S NEXT</span>
-
-            <h2>Building What Comes Next</h2>
-          </div>
-
-          <div className="about_text about_text_wide">
-            <p>
-              Today, Lil Adams is continuing to take that journey further. He is
-              currently building his own studio, a space designed not only for
-              producing beats, but also for recording and developing music from
-              the early stages of an idea to a finished song.
-            </p>
-
-            <p>
-              The studio represents another important step forward in his
-              career. Having a dedicated space gives him the opportunity to work
-              more consistently, experiment with new ideas, record his own
-              music, and create an environment where creativity can grow.
-            </p>
-
-            <p>
-              Alongside building that space, he continues producing new beats,
-              expanding his catalog, and making his work available to artists
-              who are looking for new sounds. His productions are also being
-              shared through social media, allowing his music to reach more
-              listeners and artists beyond his immediate surroundings.
-            </p>
-
-            <p>
-              The journey is still being built. From a computer that first
-              introduced him to music production, to producing beats for other
-              artists, selling his work, performing over his own productions,
-              and now creating his own studio, each stage has been another step
-              toward turning a passion into something bigger.
-            </p>
-
-            <p>
-              For Lil Adams, the goal is not simply to make more beats. It is to
-              continue developing as a producer and artist, create music that
-              connects with people, and build a space where ideas can become
-              real songs.
-            </p>
-
-            <a
-              href="https://www.beatstars.com/beatmercado"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="beatstars_link"
-            >
-              Explore my beats
-              <span>↗</span>
-            </a>
-          </div>
+      <section className="about-outro">
+        <div className="about-outro-inner about-reveal">
+          <p className="about-eyebrow">
+            <span /> TU IDEA, EL PRÓXIMO TEMA
+          </p>
+          <h2>
+            Hagamos
+            <br />
+            <span>algo real.</span>
+          </h2>
+          <Link to="/#contact" className="about-contact-link">
+            Hablemos <span>↗</span>
+          </Link>
         </div>
       </section>
     </main>

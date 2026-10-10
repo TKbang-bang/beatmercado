@@ -18,9 +18,9 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/beats" element={<Beats />} />
+        {/* <Route path="/beats" element={<Beats />} /> */}
         <Route path="/about" element={<ABout />} />
-        <Route path="/contact" element={<Contact />} />
+        {/* <Route path="/contact" element={<Contact />} /> */}
       </Routes>
       <Toaster position="top-center" richColors duration={2500} />
     </>

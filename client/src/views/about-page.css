@@ -1,0 +1,649 @@
+.about-page {
+  overflow: hidden;
+  background: var(--bg_black);
+}
+
+.about-masthead {
+  position: relative;
+  min-height: 690px;
+  display: flex;
+  align-items: center;
+  padding: 8.5rem clamp(1.25rem, 7.2vw, 7.5rem) 5rem;
+  background:
+    linear-gradient(rgba(242, 249, 241, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 249, 241, 0.022) 1px, transparent 1px),
+    var(--bg_black);
+  background-size: 76px 76px;
+}
+
+.about-masthead-inner,
+.about-chapter-inner,
+.about-evolution-inner,
+.about-next-inner,
+.about-outro-inner {
+  width: min(100%, 1320px);
+  margin-inline: auto;
+}
+
+.about-masthead-inner {
+  display: grid;
+  grid-template-columns: 1fr 0.9fr;
+  align-items: center;
+  gap: clamp(2rem, 7vw, 7rem);
+}
+
+.about-masthead-copy {
+  position: relative;
+  z-index: 2;
+}
+
+.about-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  margin: 0;
+  color: var(--orange);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.5;
+}
+
+.about-eyebrow > span {
+  width: 1.6rem;
+  height: 1px;
+  flex: 0 0 auto;
+  background: var(--orange);
+}
+
+.about-masthead h1,
+.about-chapter-heading h2,
+.about-outro h2 {
+  margin: 1.55rem 0;
+  color: var(--white);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(5.2rem, 9.3vw, 9rem);
+  font-weight: 400;
+  letter-spacing: -0.025em;
+  line-height: 0.79;
+}
+
+.about-masthead h1 span,
+.about-chapter-heading h2 span,
+.about-outro h2 span {
+  color: var(--orange);
+}
+
+.about-lead {
+  max-width: 400px;
+  margin: 1.8rem 0 0;
+  color: rgba(242, 249, 241, 0.64);
+  font-size: 0.95rem;
+  line-height: 1.85;
+}
+
+.about-scroll {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 3rem;
+  color: rgba(242, 249, 241, 0.47);
+  text-decoration: none;
+  font-size: 0.55rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.about-scroll i {
+  position: relative;
+  width: 2.5rem;
+  height: 1px;
+  background: rgba(242, 249, 241, 0.32);
+}
+
+.about-scroll i::after {
+  position: absolute;
+  top: -3px;
+  right: 0;
+  width: 7px;
+  height: 7px;
+  border-top: 1px solid rgba(242, 249, 241, 0.62);
+  border-right: 1px solid rgba(242, 249, 241, 0.62);
+  content: "";
+  transform: rotate(45deg);
+}
+
+.about-masthead-art {
+  position: relative;
+  width: min(100%, 470px);
+  justify-self: center;
+}
+
+.about-art-frame {
+  position: relative;
+  aspect-ratio: 0.9;
+  overflow: hidden;
+  background: var(--sc_black);
+  clip-path: polygon(10% 0, 100% 0, 100% 88%, 89% 100%, 0 100%, 0 10%);
+}
+
+.about-art-background,
+.about-art-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.about-art-background {
+  object-fit: cover;
+  filter: saturate(0.55) brightness(0.7);
+}
+
+.about-art-shade {
+  background:
+    linear-gradient(180deg, rgba(34, 40, 49, 0.08), rgba(34, 40, 49, 0.15) 50%, rgba(34, 40, 49, 0.72)),
+    linear-gradient(90deg, rgba(34, 40, 49, 0.2), transparent);
+}
+
+.about-artist-cutout {
+  position: absolute;
+  right: -8%;
+  bottom: -9%;
+  width: 112%;
+  height: 110%;
+  object-fit: contain;
+  object-position: center bottom;
+  filter: drop-shadow(0 10px 28px rgba(0, 0, 0, 0.35));
+}
+
+.about-art-tag {
+  position: absolute;
+  right: 1.1rem;
+  bottom: 1.2rem;
+  left: 1.1rem;
+  z-index: 1;
+  color: rgba(242, 249, 241, 0.78);
+  font-size: 0.53rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.about-masthead-art::before {
+  position: absolute;
+  z-index: 0;
+  inset: 1.1rem -1.1rem -1.1rem 1.1rem;
+  border: 1px solid rgba(255, 87, 34, 0.44);
+  content: "";
+}
+
+.about-stamp {
+  position: absolute;
+  z-index: 2;
+  top: 10%;
+  right: -7%;
+  width: 6rem;
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg_black);
+  border-radius: 50%;
+  background: var(--orange);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  line-height: 1.1;
+  transform: rotate(12deg);
+}
+
+.about-stamp b {
+  margin: 0.1rem 0;
+  font-family: sans-serif;
+  font-size: 1.2rem;
+}
+
+.about-art-coordinate {
+  position: absolute;
+  right: -0.5rem;
+  bottom: -2rem;
+  color: rgba(242, 249, 241, 0.43);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.about-chapter {
+  padding: clamp(6rem, 10vw, 9rem) clamp(1.25rem, 7.2vw, 7.5rem);
+}
+
+.about-origin {
+  border-top: 1px solid rgba(242, 249, 241, 0.08);
+  background: var(--bg_black);
+}
+
+.about-chapter-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  align-items: start;
+  gap: clamp(3rem, 9vw, 9rem);
+}
+
+.about-chapter-heading {
+  position: relative;
+}
+
+.about-chapter-heading h2 {
+  margin: 1.5rem 0 0;
+  font-size: clamp(4rem, 7vw, 6.7rem);
+}
+
+.about-chapter-index {
+  margin-top: 3.2rem;
+  color: rgba(242, 249, 241, 0.16);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 7rem;
+  line-height: 0.8;
+}
+
+.about-prose {
+  max-width: 760px;
+}
+
+.about-prose p {
+  margin: 0 0 1.4rem;
+  color: rgba(242, 249, 241, 0.66);
+  font-size: 0.87rem;
+  line-height: 1.95;
+}
+
+.about-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.about-evolution {
+  background: var(--sc_black);
+}
+
+.about-evolution-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.86fr) minmax(0, 1.14fr);
+  align-items: center;
+  gap: clamp(3rem, 8vw, 8rem);
+}
+
+.about-evolution-art {
+  position: relative;
+  min-width: 0;
+  aspect-ratio: 0.8;
+  background: var(--bg_black);
+}
+
+.about-evolution-art::after {
+  position: absolute;
+  inset: 0;
+  border: 1px solid rgba(242, 249, 241, 0.18);
+  content: "";
+  pointer-events: none;
+}
+
+.about-evolution-art img,
+.about-next-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  filter: saturate(0.62);
+}
+
+.about-photo-caption {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1.1rem;
+  color: var(--white);
+  background: linear-gradient(transparent, rgba(17, 20, 26, 0.82));
+  font-size: 0.53rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.about-art-counter {
+  position: absolute;
+  z-index: 1;
+  top: 1rem;
+  left: 1rem;
+  color: var(--white);
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 1.1rem;
+  letter-spacing: 0.08em;
+}
+
+.about-art-counter span {
+  color: rgba(242, 249, 241, 0.55);
+  font-size: 0.75rem;
+}
+
+.about-evolution-copy .about-chapter-heading {
+  margin-bottom: 2.4rem;
+}
+
+.about-evolution-copy .about-chapter-heading h2 {
+  font-size: clamp(3.8rem, 6.2vw, 5.8rem);
+}
+
+.about-evolution-copy .about-prose p {
+  font-size: 0.81rem;
+}
+
+.about-next {
+  background:
+    linear-gradient(rgba(242, 249, 241, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(242, 249, 241, 0.018) 1px, transparent 1px),
+    var(--bg_black);
+  background-size: 76px 76px;
+}
+
+.about-next-inner {
+  position: relative;
+}
+
+.about-next .about-chapter-heading {
+  margin-bottom: 3.2rem;
+}
+
+.about-next .about-chapter-heading h2 {
+  font-size: clamp(4rem, 7vw, 6.5rem);
+}
+
+.about-next-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 0.65fr);
+  align-items: start;
+  gap: clamp(2.5rem, 8vw, 8rem);
+}
+
+.about-next-content .about-prose {
+  max-width: 770px;
+}
+
+.about-next-image {
+  position: sticky;
+  top: 7rem;
+  aspect-ratio: 0.9;
+  overflow: hidden;
+  background: var(--sc_black);
+}
+
+.about-next-image::after {
+  position: absolute;
+  inset: 35% 0 0;
+  background: linear-gradient(transparent, rgba(17, 20, 26, 0.82));
+  content: "";
+}
+
+.about-next-image span {
+  position: absolute;
+  z-index: 1;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  color: var(--white);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+
+.about-beatstars-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 3.2rem;
+  padding: 0.9rem 1.2rem;
+  color: var(--white);
+  border: 1px solid var(--orange);
+  text-decoration: none;
+  font-size: 0.77rem;
+  font-weight: 700;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.about-beatstars-link span {
+  color: var(--orange);
+  font-size: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.about-beatstars-link:hover {
+  color: var(--bg_black);
+  background: var(--orange);
+  transform: translateY(-3px);
+}
+
+.about-beatstars-link:hover span {
+  color: var(--bg_black);
+  transform: translate(3px, -3px);
+}
+
+.about-outro {
+  padding: clamp(5rem, 9vw, 8rem) clamp(1.25rem, 7.2vw, 7.5rem);
+  background: var(--sc_black);
+}
+
+.about-outro-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.about-outro h2 {
+  margin-block: 1.5rem 2rem;
+  font-size: clamp(4.5rem, 8vw, 7.5rem);
+}
+
+.about-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.95rem 1.2rem;
+  color: var(--bg_black);
+  background: var(--orange);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.about-contact-link span {
+  font-size: 1rem;
+}
+
+.about-contact-link:hover {
+  color: var(--white);
+  background: var(--bg_black);
+  transform: translateY(-3px);
+}
+
+.about-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s cubic-bezier(0.2, 0.75, 0.3, 1);
+}
+
+.about-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .about-masthead {
+    min-height: 620px;
+  }
+
+  .about-masthead-inner {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 2rem;
+  }
+
+  .about-masthead h1 {
+    font-size: clamp(5rem, 10vw, 7rem);
+  }
+
+  .about-chapter-inner {
+    grid-template-columns: minmax(0, 0.75fr) minmax(0, 1.25fr);
+    gap: 3rem;
+  }
+
+  .about-chapter-heading h2 {
+    font-size: clamp(3.8rem, 7vw, 5rem);
+  }
+
+  .about-evolution-inner {
+    gap: 3rem;
+  }
+
+  .about-next-content {
+    grid-template-columns: minmax(0, 1fr) minmax(220px, 0.65fr);
+    gap: 2.5rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-masthead {
+    min-height: auto;
+    padding: 7rem 1.25rem 5rem;
+  }
+
+  .about-masthead-inner {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+
+  .about-masthead h1 {
+    font-size: clamp(5rem, 17vw, 7.5rem);
+  }
+
+  .about-lead {
+    max-width: 450px;
+    font-size: 0.88rem;
+  }
+
+  .about-scroll {
+    margin-top: 2rem;
+  }
+
+  .about-masthead-art {
+    width: min(80%, 410px);
+    justify-self: center;
+  }
+
+  .about-stamp {
+    right: -9%;
+    width: 5.2rem;
+    height: 5.2rem;
+    font-size: 0.72rem;
+  }
+
+  .about-chapter {
+    padding: 5.5rem 1.25rem;
+  }
+
+  .about-chapter-inner,
+  .about-evolution-inner {
+    grid-template-columns: 1fr;
+    gap: 2.7rem;
+  }
+
+  .about-chapter-heading h2,
+  .about-evolution-copy .about-chapter-heading h2,
+  .about-next .about-chapter-heading h2 {
+    font-size: clamp(4rem, 14vw, 5.8rem);
+  }
+
+  .about-chapter-index {
+    position: absolute;
+    top: -0.7rem;
+    right: 0;
+    margin: 0;
+    font-size: 5rem;
+  }
+
+  .about-prose p {
+    font-size: 0.81rem;
+  }
+
+  .about-evolution-inner {
+    gap: 3rem;
+  }
+
+  .about-evolution-art {
+    width: min(100%, 500px);
+    aspect-ratio: 1.05;
+  }
+
+  .about-evolution-copy .about-chapter-heading {
+    margin-bottom: 2rem;
+  }
+
+  .about-next .about-chapter-heading {
+    margin-bottom: 2.5rem;
+  }
+
+  .about-next-content {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about-next-image {
+    position: relative;
+    top: auto;
+    width: min(100%, 500px);
+    aspect-ratio: 1.25;
+  }
+
+  .about-beatstars-link {
+    margin-top: 2.4rem;
+  }
+
+  .about-outro {
+    padding: 5rem 1.25rem;
+  }
+
+  .about-outro h2 {
+    font-size: clamp(4rem, 13vw, 6rem);
+  }
+}
+
+@media (max-width: 420px) {
+  .about-masthead h1 {
+    font-size: 4.65rem;
+  }
+
+  .about-masthead-art {
+    width: 83%;
+  }
+
+  .about-chapter-heading h2,
+  .about-evolution-copy .about-chapter-heading h2,
+  .about-next .about-chapter-heading h2 {
+    font-size: 3.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .about-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

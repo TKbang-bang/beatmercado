@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { CloseIcon, MenuIcon } from "../icons/SVG";
 import "./components.css";
 
 function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,29 +14,36 @@ function Header() {
     };
 
     window.addEventListener("scroll", handleScroll);
-
+    handleScroll();
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const handleMenu = () => {
-    document.querySelector("header").classList.add("active");
-    document.body.style.overflow = "hidden";
-  };
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
 
-  const handleClose = () => {
-    document.querySelector("header").classList.remove("active");
-    document.body.style.overflow = "";
-  };
+  const homePath = pathname === "/" ? "" : "/";
+  const closeMenu = () => setMenuOpen(false);
 
   return (
-    <header className={`header container ${scrolled ? "scrolled" : ""}`}>
-      <NavLink to="/" className="logo_link">
-        <h1 className="logo">Beat Mercado</h1>
-      </NavLink>
+    <header
+      className={`header container ${scrolled ? "scrolled" : ""} ${menuOpen ? "active" : ""}`}
+    >
+      <a href={`${homePath}#inicio`} className="logo_link" onClick={closeMenu}>
+        <span className="logo">beat<span>mercado</span></span>
+      </a>
 
-      <button className="svg_container menu mobile" onClick={handleMenu}>
+      <button
+        className="svg_container menu mobile"
+        onClick={() => setMenuOpen(true)}
+        aria-label="Abrir menú"
+        aria-expanded={menuOpen}
+      >
         <MenuIcon />
       </button>
 
@@ -43,16 +52,18 @@ function Header() {
           <div className="close_container">
             <button
               className="svg_container close mobile"
-              onClick={handleClose}
+              onClick={closeMenu}
+              aria-label="Cerrar menú"
             >
               <CloseIcon />
             </button>
           </div>
 
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/beats">Beats</NavLink>
-          <NavLink to="/about">About</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
+          <a href={`${homePath}#inicio`} onClick={closeMenu}>Inicio</a>
+          <a href={`${homePath}#servicios`} onClick={closeMenu}>Servicios</a>
+          <a href={`${homePath}#beats`} onClick={closeMenu}>Beats</a>
+          <a href={`${homePath}#sobre-mi`} onClick={closeMenu}>Sobre mí</a>
+          <a href={`${homePath}#contacto`} className="nav-contact" onClick={closeMenu}>Contacto <span>↗</span></a>
         </div>
       </div>
     </header>

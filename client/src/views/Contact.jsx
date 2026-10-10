@@ -1,15 +1,12 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./contact.css";
 
-import {
-  YoutubeIcon,
-  InstagramIcon,
-  TiktokIcon,
-  ShopIcon,
-  ArrowRightIcon,
-} from "../icons/SVG";
+import { ShopIcon, ArrowRightIcon } from "../icons/SVG";
 import { toast } from "sonner";
 import { mailSenderService } from "../services/mail.service";
+
+const beatStore =
+  import.meta.env.VITE_AUDIOS_URL || "https://www.beatstars.com/beatmercado";
 
 function Contact() {
   const [name, setName] = useState("");
@@ -21,7 +18,7 @@ function Contact() {
     e.preventDefault();
 
     if (!name || !subject || !email || !message)
-      return toast.error("All feilds are required");
+      return toast.error("Completa todos los campos");
 
     try {
       const res = await mailSenderService(name, email, subject, message);
@@ -35,89 +32,54 @@ function Contact() {
       return toast.success(res.message);
     } catch (error) {
       console.log(error);
-      return toast.error(error.response?.data?.message || "Server error");
+      return toast.error(error.response?.data?.message || "No se pudo enviar el mensaje");
     }
   };
 
   return (
     <main className="contact container">
       <section className="contact_info">
-        <span className="contact_label">GET IN TOUCH</span>
+        <span className="contact_label">HABLEMOS DE MÚSICA</span>
 
         <h1>
-          LET'S MAKE
+          HAGAMOS
           <br />
-          SOMETHING
+          ALGO
           <br />
-          <span>GREAT.</span>
+          <span>INCREÍBLE.</span>
         </h1>
 
         <p className="contact_description">
-          Have a project in mind, looking for a custom beat, or interested in
-          working together? I'd love to hear what you're creating. Let's bring
-          your ideas to life.
+          ¿Tienes una idea, buscas un beat a medida o quieres trabajar juntos?
+          Cuéntame qué estás creando y hagámoslo realidad.
         </p>
 
-        <p className="contact_social_title">CONNECT WITH ME</p>
-
-        <div className="contact_icons">
-          <a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="YouTube"
-          >
-            <YoutubeIcon />
-          </a>
-
-          <a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Instagram"
-          >
-            <InstagramIcon />
-          </a>
-
-          <a
-            href=""
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="TikTok"
-          >
-            <TiktokIcon />
-          </a>
-        </div>
-
         <a
-          href={import.meta.env.VITE_AUDIOS_URL}
+          href={beatStore}
           className="buy"
           target="_blank"
           rel="noopener noreferrer"
         >
           <ShopIcon />
-          <span>Explore my beats</span>
+          <span>Escucha mis beats</span>
           <ArrowRightIcon />
         </a>
       </section>
 
       <section className="contact_form_section">
         <div className="contact_form_heading">
-          <h2>Send me a message</h2>
-          {/* <p>
-            Fill out the form below and tell me a little about your project.
-          </p> */}
+          <h2>Envíame un mensaje</h2>
         </div>
 
         <form className="contact_form" onSubmit={handleSendMail}>
           <div className="form_row">
             <div className="form_field">
-              <label htmlFor="contact_name">Your name</label>
+              <label htmlFor="contact_name">Tu nombre</label>
               <input
                 type="text"
                 id="contact_name"
                 name="name"
-                placeholder="John Doe"
+                placeholder="Tu nombre"
                 autoComplete="name"
                 required
                 value={name}
@@ -126,12 +88,12 @@ function Contact() {
             </div>
 
             <div className="form_field">
-              <label htmlFor="contact_email">Email address</label>
+              <label htmlFor="contact_email">Correo electrónico</label>
               <input
                 type="email"
                 id="contact_email"
                 name="email"
-                placeholder="john@example.com"
+                placeholder="tu@email.com"
                 autoComplete="email"
                 required
                 value={email}
@@ -141,12 +103,12 @@ function Contact() {
           </div>
 
           <div className="form_field">
-            <label htmlFor="contact_subject">Subject</label>
+            <label htmlFor="contact_subject">Asunto</label>
             <input
               type="text"
               id="contact_subject"
               name="subject"
-              placeholder="What would you like to discuss?"
+              placeholder="¿Qué tienes en mente?"
               required
               value={subject}
               onChange={(e) => setSubject(e.target.value)}
@@ -154,11 +116,11 @@ function Contact() {
           </div>
 
           <div className="form_field">
-            <label htmlFor="contact_message">Your message</label>
+            <label htmlFor="contact_message">Tu mensaje</label>
             <textarea
               id="contact_message"
               name="message"
-              placeholder="Tell me about your project..."
+              placeholder="Cuéntame sobre tu proyecto..."
               rows="6"
               required
               value={message}
@@ -167,7 +129,7 @@ function Contact() {
           </div>
 
           <button type="submit" className="contact_submit">
-            Send message
+            Enviar mensaje
             <ArrowRightIcon />
           </button>
         </form>
